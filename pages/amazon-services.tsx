@@ -53,13 +53,13 @@ const AmazonServices = () => {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="relative h-[400px]"
+              className="relative h-[400px] flex items-center justify-center"
             >
               <Image
-                src="/images/Amazon-Vendor-Account-Management.jpg"
+                src="/images/Amazon-Vendor-Account-Management.png"
                 alt="Amazon Vendor Account Management"
                 fill
-                className="object-cover rounded-xl"
+                className="object-contain rounded-xl"
               />
             </motion.div>
           </div>

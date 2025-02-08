@@ -1,6 +1,25 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 const Hero = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // When the user scrolls more than 50px, switch to the happy girl image.
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section className="min-h-screen bg-gradient-to-b from-purple-900 to-dark pt-32">
       <div className="container mx-auto px-4 text-center">
@@ -15,31 +34,52 @@ const Hero = () => {
           <p className="text-xl mb-8">
             Power Your Growth with Our Expert Amazon Service Solutions
           </p>
-          <button className="bg-purple-600 px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors">
+          <Link
+            href="/contact"
+            className="inline-block bg-purple-600 px-8 py-4 rounded-lg text-white hover:bg-purple-700 transition-colors"
+          >
             Free Audit
-          </button>
+          </Link>
         </motion.div>
-        
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-12 relative"
-        >
-          <div className="bg-gray-800/50 rounded-full p-8 max-w-md mx-auto">
-            {/* Placeholder for illustration - replace src with your actual image */}
-            <img 
-              src="/images/hero-illustration.svg" 
-              alt="Hero" 
-              className="w-full"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.backgroundColor = '#374151';
-                target.style.padding = '2rem';
-              }}
-            />
-          </div>
-        </motion.div>
+        <div className="relative mt-12 w-[900px] h-[900px] mx-auto">
+          <AnimatePresence exitBeforeEnter>
+            {scrolled ? (
+              <motion.div
+                key="happy"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src="/images/happy-girl.png"
+                  alt="Happy Girl"
+                  width={900}
+                  height={900}
+                  className="object-contain"
+                />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="sad"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src="/images/sad-girl.png"
+                  alt="Sad Girl"
+                  width={900}
+                  height={900}
+                  className="object-contain"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );

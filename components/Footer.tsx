@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const Footer = () => {
     const links = {
       company: ['Home', 'Jobs', 'Portfolio', 'Blog', 'About Us'],
@@ -26,12 +28,12 @@ const Footer = () => {
               <ul className="space-y-2">
                 {links.company.map((link) => (
                   <li key={link}>
-                    <a 
-                      href={`/${link.toLowerCase().replace(' ', '-')}`}
+                    <Link
+                      href={link === 'Home' ? '/' : `/${link.toLowerCase().replace(' ', '-')}`}
                       className="text-gray-400 hover:text-white transition-colors"
                     >
                       {link}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -42,12 +44,12 @@ const Footer = () => {
               <ul className="space-y-2">
                 {links.legal.map((link) => (
                   <li key={link}>
-                    <a 
+                    <Link
                       href={`/${link.toLowerCase().replace(' ', '-')}`}
                       className="text-gray-400 hover:text-white transition-colors"
                     >
                       {link}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -55,10 +57,11 @@ const Footer = () => {
           </div>
           
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>© {new Date().getFullYear()} YourCompany. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} RootAMZ. All rights reserved.</p>
           </div>
         </div>
       </footer>
+
     );
   };
   

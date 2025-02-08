@@ -64,9 +64,12 @@ const Navbar = () => {
             >
               About Us
             </Link>
-            <button className="bg-purple-600 px-4 py-2 rounded-lg hover:bg-purple-700 transition-all">
+            <Link
+              href="/contact"
+              className="bg-purple-600 px-4 py-2 rounded-lg text-white hover:bg-purple-700 transition-colors"
+            >
               Free Account Audit
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}

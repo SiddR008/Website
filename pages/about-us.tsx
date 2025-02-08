@@ -6,9 +6,9 @@ import Image from 'next/image';
 const AboutUs = () => {
   const teamMembers = [
     {
-      name: "John Smith",
+      name: "Ranjit Swain",
       role: "CEO & Founder",
-      image: "/images/team/member1.jpg",
+      image: "/images/ranjit.jpg",
     },
     {
       name: "Sarah Johnson",
@@ -81,7 +81,7 @@ const AboutUs = () => {
               className="relative h-[400px]"
             >
               <Image
-                src="/images/about/story.jpg"
+                src="/images/about-us.png"
                 alt="Our Story"
                 fill
                 className="object-cover rounded-xl"

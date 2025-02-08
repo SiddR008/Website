@@ -8,8 +8,12 @@ const ServiceCard = ({ title, description, icon, index }: any) => {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm hover:bg-gray-800/70 transition-colors"
     >
-      <div className="bg-purple-600/20 rounded-lg p-3 w-fit mb-4">
-        <img src={icon} alt={title} className="w-8 h-8" />
+      <div className="bg-purple-600/20 rounded-lg p-3 w-auto h-40 flex items-center justify-center mb-4">
+        <img 
+          src={icon} 
+          alt={title} 
+          className="w-full h-full object-contain" 
+        />
       </div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="text-gray-300 mb-4">{description}</p>
@@ -26,17 +30,17 @@ const Services = () => {
     {
       title: "Amazon Vendor Central",
       description: "Optimize your vendor central operations for maximum efficiency and growth",
-      icon: "/icons/vendor.svg"
+      icon: "/images/amazon-vendor-central.png"
     },
     {
       title: "Amazon Seller Central",
       description: "Maximize your seller central performance with our expert strategies",
-      icon: "/icons/seller.svg"
+      icon: "/images/amazon-seller-central.png"
     },
     {
       title: "PPC Marketing Support",
       description: "Strategic PPC campaigns that drive results and increase ROI",
-      icon: "/icons/ppc.svg"
+      icon: "/images/ppc-marketing.png"
     }
   ];
 

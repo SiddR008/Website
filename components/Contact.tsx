@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const Contact = () => {
   return (
@@ -12,9 +13,11 @@ const Contact = () => {
           <h2 className="text-4xl font-bold mb-8">
             Ready to Elevate Your e-Commerce?
           </h2>
-          <button className="bg-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-purple-700 transition-colors">
-            Get A Free Audit
-          </button>
+          <Link href="/contact">
+            <button className="bg-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-purple-700 transition-colors">
+              Get A Free Audit
+            </button>
+          </Link>
         </motion.div>
       </div>
     </section>
