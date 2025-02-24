@@ -44,7 +44,7 @@ const AmazonServices = () => {
               <h3 className="text-xl font-semibold mb-4">Amazon Vendor Central Management Services We Offer:</h3>
               <ul className="list-disc list-inside text-gray-300 space-y-2 ml-4">
                 <li>NIS (New Item Setup) creations</li>
-                <li>Product listing optimization as per Amazon's product search algorithm</li>
+                <li>Product listing optimization as per Amazon&apos;s product search algorithm</li>
                 <li>Vendor Central account management</li>
                 <li>Inventory management</li>
                 <li>A+ content creation</li>

@@ -57,7 +57,13 @@ const BrandCreativeServices = () => {
                 className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm"
               >
                 <div className="bg-purple-600/20 rounded-lg p-3 w-fit mb-4">
-                  <img src={service.icon} alt={service.title} className="w-8 h-8" />
+                  <Image
+                    src={service.icon}
+                    alt={service.title}
+                    width={32}
+                    height={32}
+                    className="w-8 h-8"
+                  />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
                 <p className="text-gray-300">{service.description}</p>

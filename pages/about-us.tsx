@@ -72,7 +72,7 @@ const AboutUs = () => {
                 RootAMZ was founded with a vision to help businesses navigate and succeed in the complex world of e-commerce. Our journey began with a simple mission: to provide comprehensive Amazon solutions that drive real results.
               </p>
               <p className="text-gray-300">
-                Today, we're proud to have helped numerous brands establish and grow their presence on Amazon, delivering exceptional results through our expertise in vendor management, creative services, and strategic marketing solutions.
+                Today, we&apos;re proud to have helped numerous brands establish and grow their presence on Amazon, delivering exceptional results through our expertise in vendor management, creative services, and strategic marketing solutions.
               </p>
             </motion.div>
             <motion.div
@@ -162,7 +162,7 @@ const AboutUs = () => {
             className="max-w-2xl mx-auto"
           >
             <h2 className="text-4xl font-bold mb-6">
-              Let's Work Together
+              Let&apos;s Work Together
             </h2>
             <p className="text-xl text-gray-300 mb-8">
               Ready to take your Amazon business to the next level?

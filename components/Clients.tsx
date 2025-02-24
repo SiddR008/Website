@@ -62,7 +62,7 @@ const Clients = () => {
         >
           <h2 className="text-3xl font-bold mb-4">Trusted by Leading Brands</h2>
           <p className="text-gray-400">
-            We've helped these amazing companies grow their Amazon business
+            We&apos;ve helped these amazing companies grow their Amazon business
           </p>
         </motion.div>
 

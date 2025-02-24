@@ -1,8 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
-import { JobType } from '../../types/job';
 
 const jobsDirectory = path.join(process.cwd(), 'jobs');
 
