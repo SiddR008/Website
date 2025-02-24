@@ -8,34 +8,35 @@ import TagsList from '../components/blog/TagsList';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getSortedPostsData, getAllTags } from '../lib/posts.server';
-import { PostType } from '../types/post';
-import { searchPosts as clientSearchPosts } from '../utils/posts.client';
+import { fetchBlogs } from '../utils/fetchBlogs';
+import { clientSearchPosts } from '../utils/clientSearchPosts';
 import Head from 'next/head';
 
 type BlogPageProps = {
   initialPosts: {
-    posts: PostType[];
-    totalPages: number;
-  };
+    title: string;
+    slug: string;
+    content: string;
+    dateAdded: string;
+  }[];
   tags: string[];
 };
 
 export const getStaticProps: GetStaticProps<BlogPageProps> = async () => {
-  const initialPosts = getSortedPostsData(1, 6);
-  const tags = getAllTags();
+  const initialPosts = await fetchBlogs();
+  const tags = [];
 
   return {
     props: {
       initialPosts,
       tags,
     },
-    revalidate: 3600, // Revalidate every hour
+    revalidate: 3600,
   };
 };
 
 const BlogPage = ({ initialPosts, tags }: BlogPageProps) => {
-  const [posts, setPosts] = useState(initialPosts.posts);
+  const [posts, setPosts] = useState(initialPosts);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTag, setSelectedTag] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
@@ -138,50 +139,32 @@ const BlogPage = ({ initialPosts, tags }: BlogPageProps) => {
               <>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {posts.map((post) => (
-                    <Link key={post.id} href={`/blog/${post.id}`}>
+                    <Link key={post.slug} href={`/blog/${post.slug}`}>
                       <motion.article 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         whileHover={{ y: -5 }}
                         className="bg-gray-800/50 rounded-xl overflow-hidden cursor-pointer border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
                       >
-                        {post.coverImage && (
-                          <div className="relative h-48 overflow-hidden">
-                            <Image
-                              src={post.coverImage}
-                              alt={post.title}
-                              fill
-                              className="object-cover transition-transform duration-300 hover:scale-105"
-                            />
-                          </div>
-                        )}
+                        <div className="relative h-48 overflow-hidden">
+                          <Image
+                            src={post.coverImage || '/default-image.jpg'}
+                            alt={post.title}
+                            fill
+                            className="object-cover transition-transform duration-300 hover:scale-105"
+                          />
+                        </div>
                         <div className="p-6">
-                          <div className="flex gap-2 mb-3">
-                            {post.tags.map((tag) => (
-                              <span 
-                                key={tag}
-                                className="text-xs px-2 py-1 bg-purple-500/20 text-purple-300 rounded-full"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
                           <h3 className="text-xl font-semibold mb-2 hover:text-purple-400 transition-colors">
                             {post.title}
                           </h3>
-                          <p className="text-gray-300 mb-4 line-clamp-2">{post.excerpt}</p>
+                          <p className="text-gray-300 mb-4 line-clamp-2">{post.content}</p>
                           <div className="flex justify-between items-center text-sm text-gray-400">
-                            <span>{new Date(post.date).toLocaleDateString('en-US', {
+                            <span>{new Date(post.dateAdded).toLocaleDateString('en-US', {
                               year: 'numeric',
                               month: 'long',
                               day: 'numeric'
                             })}</span>
-                            <span className="flex items-center gap-1">
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              {post.readingTime}
-                            </span>
                           </div>
                         </div>
                       </motion.article>
@@ -191,7 +174,7 @@ const BlogPage = ({ initialPosts, tags }: BlogPageProps) => {
 
                 <Pagination 
                   currentPage={currentPage}
-                  totalPages={initialPosts.totalPages}
+                  totalPages={Math.ceil(posts.length / 6)}
                   onPageChange={handlePageChange}
                 />
               </>
