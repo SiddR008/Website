@@ -22,45 +22,40 @@ const Navbar = () => {
               priority
             />
           </Link>
-          
+
           <div className="flex gap-6 items-center">
-            <Link 
+            <Link
               href="/amazon-services"
-              className={`text-gray-200 hover:text-white transition-colors ${
-                router.pathname === '/amazon-services' ? 'text-white' : ''
-              }`}
+              className={`text-gray-200 hover:text-white transition-colors ${router.pathname === '/amazon-services' ? 'text-white' : ''
+                }`}
             >
               Amazon Services
             </Link>
-            <Link 
+            <Link
               href="/brand-creative-services"
-              className={`text-gray-200 hover:text-white transition-colors ${
-                router.pathname === '/brand-creative-services' ? 'text-white' : ''
-              }`}
+              className={`text-gray-200 hover:text-white transition-colors ${router.pathname === '/brand-creative-services' ? 'text-white' : ''
+                }`}
             >
               Brand Creative Services
             </Link>
-            <Link 
+            <Link
               href="/blog"
-              className={`text-gray-200 hover:text-white transition-colors ${
-                router.pathname === '/blog' ? 'text-white' : ''
-              }`}
+              className={`text-gray-200 hover:text-white transition-colors ${router.pathname === '/blog' ? 'text-white' : ''
+                }`}
             >
               Blog
             </Link>
-            <Link 
+            <Link
               href="/portfolio"
-              className={`text-gray-200 hover:text-white transition-colors ${
-                router.pathname === '/portfolio' ? 'text-white' : ''
-              }`}
+              className={`text-gray-200 hover:text-white transition-colors ${router.pathname === '/portfolio' ? 'text-white' : ''
+                }`}
             >
               Portfolio
             </Link>
-            <Link 
+            <Link
               href="/about-us"
-              className={`text-gray-200 hover:text-white transition-colors ${
-                router.pathname === '/about-us' ? 'text-white' : ''
-              }`}
+              className={`text-gray-200 hover:text-white transition-colors ${router.pathname === '/about-us' ? 'text-white' : ''
+                }`}
             >
               About Us
             </Link>

@@ -26,6 +26,7 @@ const Clients = () => {
     { id: 16, logo: '/images/client-image/jones.png', name: 'Client 3' },
     { id: 17, logo: '/images/client-image/rome.png', name: 'Client 4' },
 
+    
 
     // 10 Additional client logos
     { id: 18, logo: '/images/client-image/es.png', name: 'New Client 1' },
